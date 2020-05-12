@@ -6,6 +6,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      message: "",
       age: null,
       clicked: false,
       work: null,
@@ -31,7 +32,13 @@ class App extends React.Component {
       travelling: null,
       travellingResultsInHours: null,
       travellingResultsInWeeks: null,
-      travellingResultsInMonths: null
+      travellingResultsInMonths: null,
+      ageInMinutes: null,
+      ageInMinutes: null,
+      ageInHours: null,
+      ageInDays: null,
+      ageInWeeks: null,
+      ageInMonths: null
     };
   }
 
@@ -43,7 +50,7 @@ class App extends React.Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    const { work, sleep, eating, tv, driving, travelling } = this.state;
+    const { work, sleep, eating, tv, driving, travelling, age } = this.state;
     const sum =
       Number(work) +
       Number(sleep) +
@@ -83,7 +90,16 @@ class App extends React.Component {
       var countMonthsOfTvInYear = Math.ceil(countWeeksOfTvInYear / 52);
       var countMonthsOfDriveInYear = Math.ceil(countWeeksOfDriveInYear / 52);
       var countMonthsOfTravelInYear = Math.ceil(countWeeksOfTravelInYear / 52);
+
+      //you age in minutes, hours, weeks and months
+      var ageInMinutes = age * 525600;
+      var ageInHours = age * 8760;
+      var ageInDays = age * 365;
+      var ageInWeeks = age * 52;
+      var ageInMonths = age * 12;
+
       this.setState({
+        message: "Hi Lauren Currie, I hope you enjoy the App",
         clicked: true,
         workResultsInHours: countHoursOfWorkInYear,
         workResultsInWeeks: countWeeksOfWorkInYear,
@@ -107,12 +123,27 @@ class App extends React.Component {
 
         travellingResultsInHours: countHoursOfTravelInYear,
         travellingResultsInWeeks: countWeeksOfTravelInYear,
-        travellingResultsInMonths: countMonthsOfTravelInYear
+        travellingResultsInMonths: countMonthsOfTravelInYear,
+
+        ageInMinutes: ageInMinutes,
+        ageInHours: ageInHours,
+        ageInDays: ageInDays,
+        ageInWeeks: ageInWeeks,
+        ageInMonths: ageInMonths
       });
     }
   };
   render() {
-    const { work, sleep, eating, tv, driving, travelling, age } = this.state;
+    const {
+      work,
+      sleep,
+      eating,
+      tv,
+      driving,
+      travelling,
+      age,
+      message
+    } = this.state;
     const {
       workResultsInHours,
       workResultsInWeeks,
@@ -144,165 +175,146 @@ class App extends React.Component {
       travellingResultsInMonths
     } = this.state;
 
+    const {
+      ageInMinutes,
+      ageInHours,
+      ageInDays,
+      ageInWeeks,
+      ageInMonths
+    } = this.state;
+
     return (
       <div className='App'>
-        <div class='row'>
-          <div class='col-md-4'>
-            <div class='form-group'>
-              {" "}
-              <label for='form_name'>Firstname *</label>{" "}
-              <input
-                id='form_name'
-                type='text'
-                name='name'
-                class='form-control'
-                placeholder='Please enter your firstname *'
-                required='required'
-                data-error='Firstname is required.'
-              />{" "}
-            </div>
-          </div>
-          <div class='col-md-4'>
-            <div class='form-group'>
-              {" "}
-              <label for='form_lastname'>Lastname *</label>{" "}
-              <input
-                id='form_lastname'
-                type='text'
-                name='surname'
-                class='form-control'
-                placeholder='Please enter your lastname *'
-                required='required'
-                data-error='Lastname is required.'
-              />{" "}
-            </div>
-          </div>
-        </div>
-        <div class='row'>
-          <div class='col-md-4'>
-            <div class='form-group'>
-              {" "}
-              <label for='form_name'>Firstname *</label>{" "}
-              <input
-                id='form_name'
-                type='text'
-                name='name'
-                class='form-control'
-                placeholder='Please enter your firstname *'
-                required='required'
-                data-error='Firstname is required.'
-              />{" "}
-            </div>
-          </div>
-          <div class='col-md-4'>
-            <div class='form-group'>
-              {" "}
-              <label for='form_lastname'>Lastname *</label>{" "}
-              <input
-                id='form_lastname'
-                type='text'
-                name='surname'
-                class='form-control'
-                placeholder='Please enter your lastname *'
-                required='required'
-                data-error='Lastname is required.'
-              />{" "}
-            </div>
-          </div>
-        </div>
-        <div class='row'>
-          <div class='col-md-4'>
-            <div class='form-group'>
-              {" "}
-              <label for='form_name'>Firstname *</label>{" "}
-              <input
-                id='form_name'
-                type='text'
-                name='name'
-                class='form-control'
-                placeholder='Please enter your firstname *'
-                required='required'
-                data-error='Firstname is required.'
-              />{" "}
-            </div>
-          </div>
-          <div class='col-md-4'>
-            <div class='form-group'>
-              {" "}
-              <label for='form_lastname'>Lastname *</label>{" "}
-              <input
-                id='form_lastname'
-                type='text'
-                name='surname'
-                class='form-control'
-                placeholder='Please enter your lastname *'
-                required='required'
-                data-error='Lastname is required.'
-              />{" "}
-            </div>
-          </div>
-        </div>
         <div>
           {!this.state.clicked ? (
             <form>
-              <p>Enter Your Age</p>
-              <input
-                type='number'
-                name='age'
-                value={age}
-                onChange={this.handleChange}
-              />
-              <p>Enter the work hours a day</p>
-              <input
-                type='number'
-                name='work'
-                value={work}
-                onChange={this.handleChange}
-              />
-
-              <p>Enter the sleep hours a day</p>
-              <input
-                type='number'
-                name='sleep'
-                value={sleep}
-                onChange={this.handleChange}
-              />
-
-              <p>Enter the eating hours a day</p>
-              <input
-                type='number'
-                name='eating'
-                value={eating}
-                onChange={this.handleChange}
-              />
-
-              <p>Enter the watching tv hours a day</p>
-              <input
-                type='number'
-                name='tv'
-                value={tv}
-                onChange={this.handleChange}
-              />
-
-              <p>Enter the driving hours a day</p>
-              <input
-                type='number'
-                name='driving'
-                value={driving}
-                onChange={this.handleChange}
-              />
-
-              <p>Enter the travelling hours a day</p>
-              <input
-                type='number'
-                name='travelling'
-                value={travelling}
-                onChange={this.handleChange}
-              />
-
-              <br />
-              <br />
-              <button onClick={this.handleSubmit}>Count the years</button>
+              <div className='all'>
+                <label for='age'>Age</label>{" "}
+                <input
+                  id='age'
+                  type='number'
+                  name='age'
+                  value={age}
+                  onChange={this.handleChange}
+                  className='age'
+                  placeholder='Please enter your age hours *'
+                  required='required'
+                  data-error='age is required.'
+                />
+                <div className='other'>
+                  <div class='row '>
+                    <div class='col-md-4'>
+                      <div class='form-group'>
+                        {" "}
+                        <label for='work'>Work Hours</label>{" "}
+                        <input
+                          id='work'
+                          type='number'
+                          name='work'
+                          value={work}
+                          onChange={this.handleChange}
+                          class='form-control'
+                          placeholder='Please enter your work hours *'
+                          required='required'
+                          data-error='work hours are required.'
+                        />{" "}
+                      </div>
+                    </div>
+                    <div class='col-md-4'>
+                      <div class='form-group'>
+                        {" "}
+                        <label for='sleep'>Sleep Hours</label>{" "}
+                        <input
+                          id='sleep'
+                          type='number'
+                          name='sleep'
+                          value={sleep}
+                          onChange={this.handleChange}
+                          class='form-control'
+                          placeholder='Please enter your sleep hours *'
+                          required='required'
+                          data-error='sleep hours are required.'
+                        />{" "}
+                      </div>
+                    </div>
+                  </div>
+                  <div class='row'>
+                    <div class='col-md-4'>
+                      <div class='form-group'>
+                        {" "}
+                        <label for='eating'>Eat Hours</label>{" "}
+                        <input
+                          id='eating'
+                          type='number'
+                          name='eating'
+                          value={eating}
+                          onChange={this.handleChange}
+                          class='form-control'
+                          placeholder='Please enter your eating hours *'
+                          required='required'
+                          data-error='eating hours are required.'
+                        />{" "}
+                      </div>
+                    </div>
+                    <div class='col-md-4'>
+                      <div class='form-group'>
+                        {" "}
+                        <label for='tv'>Tv Hours</label>{" "}
+                        <input
+                          id='tv'
+                          type='number'
+                          name='tv'
+                          value={tv}
+                          onChange={this.handleChange}
+                          class='form-control'
+                          placeholder='Please enter your Tv hours *'
+                          required='required'
+                          data-error='Tv hours are required.'
+                        />{" "}
+                      </div>
+                    </div>
+                  </div>
+                  <div class='row'>
+                    <div class='col-md-4'>
+                      <div class='form-group'>
+                        {" "}
+                        <label for='driving'>Drive Hours </label>{" "}
+                        <input
+                          id='driving'
+                          type='number'
+                          name='driving'
+                          value={driving}
+                          onChange={this.handleChange}
+                          class='form-control'
+                          placeholder='Please enter your driving hours *'
+                          required='required'
+                          data-error='driving hours are required.'
+                        />{" "}
+                      </div>
+                    </div>
+                    <div class='col-md-4'>
+                      <div class='form-group'>
+                        {" "}
+                        <label for='travelling'>Travel Hours</label>{" "}
+                        <input
+                          id='travelling'
+                          type='number'
+                          name='travelling'
+                          value={travelling}
+                          onChange={this.handleChange}
+                          class='form-control'
+                          placeholder='Please enter your travelling hours *'
+                          required='required'
+                          data-error='travelling hours are required.'
+                        />{" "}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <button className='button' onClick={this.handleSubmit}>
+                  Count the years
+                </button>
+              </div>{" "}
             </form>
           ) : (
             <Table
@@ -325,6 +337,12 @@ class App extends React.Component {
               travellingResultsInHours={travellingResultsInHours}
               travellingResultsInWeeks={travellingResultsInWeeks}
               travellingResultsInMonths={travellingResultsInMonths}
+              ageInMinutes={ageInMinutes}
+              ageInHours={ageInHours}
+              ageInDays={ageInDays}
+              ageInWeeks={ageInWeeks}
+              ageInMonths={ageInMonths}
+              message={message}
             />
           )}
         </div>
