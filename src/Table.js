@@ -4,7 +4,7 @@ import "./table.css";
 export class Table extends Component {
   render() {
     const {
-      message,
+      name,
       age,
       workResultsInHours,
       workResultsInWeeks,
@@ -44,10 +44,8 @@ export class Table extends Component {
     } = this.props;
     return (
       <form className='form-all'>
-        <h1 className='title'>{message}</h1>
-        {/* <h1 className='title'>
-          Table shows you your age based on each activity
-        </h1> */}
+        <h1 className='title'>Hi {name}, I hope you enjoy the App</h1>
+
         <table
           id='example'
           className='table table-striped table-bordered'

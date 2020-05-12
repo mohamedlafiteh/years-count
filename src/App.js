@@ -6,7 +6,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      message: "",
+      name: "",
       age: null,
       clicked: false,
       work: null,
@@ -50,7 +50,16 @@ class App extends React.Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    const { work, sleep, eating, tv, driving, travelling, age } = this.state;
+    const {
+      work,
+      sleep,
+      eating,
+      tv,
+      driving,
+      travelling,
+      age,
+      name
+    } = this.state;
     const sum =
       Number(work) +
       Number(sleep) +
@@ -99,7 +108,7 @@ class App extends React.Component {
       var ageInMonths = age * 12;
 
       this.setState({
-        message: "Hi Lauren Currie, I hope you enjoy the App",
+        name: name,
         clicked: true,
         workResultsInHours: countHoursOfWorkInYear,
         workResultsInWeeks: countWeeksOfWorkInYear,
@@ -142,7 +151,8 @@ class App extends React.Component {
       driving,
       travelling,
       age,
-      message
+      message,
+      name
     } = this.state;
     const {
       workResultsInHours,
@@ -197,7 +207,21 @@ class App extends React.Component {
                   value={age}
                   onChange={this.handleChange}
                   className='age'
-                  placeholder='Please enter your age hours *'
+                  placeholder='Please enter your age'
+                  required='required'
+                  data-error='age is required.'
+                />
+                <label className='name-label' for='name'>
+                  Name
+                </label>{" "}
+                <input
+                  id='name'
+                  type='text'
+                  name='name'
+                  value={name}
+                  onChange={this.handleChange}
+                  className='name'
+                  placeholder='Please enter your name '
                   required='required'
                   data-error='age is required.'
                 />
@@ -342,7 +366,7 @@ class App extends React.Component {
               ageInDays={ageInDays}
               ageInWeeks={ageInWeeks}
               ageInMonths={ageInMonths}
-              message={message}
+              name={name}
             />
           )}
         </div>
@@ -352,86 +376,3 @@ class App extends React.Component {
 }
 
 export default App;
-
-// var oneYear = 1;
-// var months = 12;
-// var weeks = 52;
-// var days = 365;
-// var hours = 8760;
-// var minutes = 525600;
-
-// var hour = 60;
-// var day = 24;
-// var week = 7;
-// var month = 30;
-// var year = 12;
-
-// var hoursWork = 8;
-// var hoursSleep = 9;
-// var hoursEat = 3;
-// var hoursWatchTv = 3;
-// var hoursDrive = 1;
-// var hoursTravel = 5;
-
-// function results(
-//   age,
-//   hoursWork,
-//   hoursSleep,
-//   hoursEat,
-//   hoursWatchTv,
-//   hoursDrive,
-//   hoursTravel
-// ) {
-//   var ageInMinutes = age * 525600;
-//   var ageInHours = age * 8760;
-//   var ageInDays = age * 365;
-//   var ageInWeeks = age * 52;
-//   var ageInMonths = age * 12;
-
-//   //Count the hours you spend in a year doing things
-
-//   var extractWeekEndsFromTheYear = year * 20;
-//   var countHoursOfWorkInYear = hoursWork * extractWeekEndsFromTheYear * 30;
-//   var countHoursOfSleepInYear = hoursSleep * days * 30;
-//   var countHoursOfEatInYear = hoursEat * days * 30;
-//   var countHoursOfTvInYear = hoursWatchTv * days * 30;
-//   var countHoursOfDriveInYear = hoursDrive * days * 30;
-//   var countHoursOfTravelInYear = hoursTravel * 30;
-
-//   //Count the weeks you spend in a year doing things
-//   var countWeeksOfWorkInYear = countHoursOfWorkInYear / 120;
-//   var countWeeksOfSleepInYear = countHoursOfSleepInYear / 168;
-//   var countWeeksOfEatInYear = countHoursOfEatInYear / 168;
-//   var countWeeksOfTvInYear = countHoursOfTvInYear / 168;
-//   var countWeeksOfDriveInYear = countHoursOfDriveInYear / 168;
-//   var countWeeksOfTravelInYear = countHoursOfTravelInYear / 168;
-
-//   //Count the months you spend in a year doing things
-
-//   var countMonthsOfWorkInYear = countWeeksOfWorkInYear / 52;
-//   var countMonthsOfSleepInYear = countWeeksOfSleepInYear / 52;
-//   var countMonthsOfEatInYear = countWeeksOfEatInYear / 52;
-//   var countMonthsOfTvInYear = countWeeksOfTvInYear / 52;
-//   var countMonthsOfDriveInYear = countWeeksOfDriveInYear / 52;
-//   var countMonthsOfTravelInYear = countWeeksOfTravelInYear / 52;
-// }
-
-// var age = 30;
-// var hoursWork = 8;
-// var hoursSleep = 9;
-// var hoursEat = 3;
-// var hoursWatchTv = 3;
-// var hoursDrive = 1;
-// var hoursTravel = 20;
-
-// console.log(
-//   results(
-//     age,
-//     hoursWork,
-//     hoursSleep,
-//     hoursEat,
-//     hoursWatchTv,
-//     hoursDrive,
-//     hoursTravel
-//   )
-// );
