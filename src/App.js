@@ -34,7 +34,6 @@ class App extends React.Component {
       travellingResultsInWeeks: null,
       travellingResultsInMonths: null,
       ageInMinutes: null,
-      ageInMinutes: null,
       ageInHours: null,
       ageInDays: null,
       ageInWeeks: null,
@@ -151,7 +150,6 @@ class App extends React.Component {
       driving,
       travelling,
       age,
-      message,
       name
     } = this.state;
     const {
