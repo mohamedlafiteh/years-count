@@ -1,5 +1,7 @@
 import React from "react";
 import Table from "./Table";
+import Header from "./Header";
+
 import "./App.css";
 
 class App extends React.Component {
@@ -193,6 +195,7 @@ class App extends React.Component {
 
     return (
       <div className='App'>
+      <Header/>
         <div>
           {!this.state.clicked ? (
             <form>
@@ -205,7 +208,7 @@ class App extends React.Component {
                   value={age}
                   onChange={this.handleChange}
                   className='age'
-                  placeholder='Please enter your age'
+                  placeholder='Enter your age'
                   required='required'
                   data-error='age is required.'
                 />
@@ -219,7 +222,7 @@ class App extends React.Component {
                   value={name}
                   onChange={this.handleChange}
                   className='name'
-                  placeholder='Please enter your name '
+                  placeholder='Enter your name '
                   required='required'
                   data-error='age is required.'
                 />
@@ -236,7 +239,7 @@ class App extends React.Component {
                           value={work}
                           onChange={this.handleChange}
                           className='form-control'
-                          placeholder='Please enter your work hours *'
+                          placeholder='Enter hours'
                           required='required'
                           data-error='work hours are required.'
                         />{" "}
@@ -253,7 +256,7 @@ class App extends React.Component {
                           value={sleep}
                           onChange={this.handleChange}
                           class='form-control'
-                          placeholder='Please enter your sleep hours *'
+                          placeholder='Enter hours'
                           required='required'
                           data-error='sleep hours are required.'
                         />{" "}
@@ -272,7 +275,7 @@ class App extends React.Component {
                           value={eating}
                           onChange={this.handleChange}
                           class='form-control'
-                          placeholder='Please enter your eating hours *'
+                          placeholder='Enter hours'
                           required='required'
                           data-error='eating hours are required.'
                         />{" "}
@@ -289,7 +292,7 @@ class App extends React.Component {
                           value={tv}
                           onChange={this.handleChange}
                           class='form-control'
-                          placeholder='Please enter your Tv hours *'
+                          placeholder='Enter hours'
                           required='required'
                           data-error='Tv hours are required.'
                         />{" "}
@@ -308,7 +311,7 @@ class App extends React.Component {
                           value={driving}
                           onChange={this.handleChange}
                           class='form-control'
-                          placeholder='Please enter your driving hours *'
+                          placeholder='Enter hours'
                           required='required'
                           data-error='driving hours are required.'
                         />{" "}
@@ -325,7 +328,7 @@ class App extends React.Component {
                           value={travelling}
                           onChange={this.handleChange}
                           class='form-control'
-                          placeholder='Please enter your travelling hours *'
+                          placeholder='Enter hours'
                           required='required'
                           data-error='travelling hours are required.'
                         />{" "}
