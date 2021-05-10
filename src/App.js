@@ -235,7 +235,7 @@ class App extends React.Component {
                           name='work'
                           value={work}
                           onChange={this.handleChange}
-                          class='form-control'
+                          className='form-control'
                           placeholder='Please enter your work hours *'
                           required='required'
                           data-error='work hours are required.'
